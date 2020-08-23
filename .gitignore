@@ -3,6 +3,7 @@
 !.idea/codeStyles/
 !.idea/fileTemplates/
 
+*.iml
 
 ### Maven ###
 target/
