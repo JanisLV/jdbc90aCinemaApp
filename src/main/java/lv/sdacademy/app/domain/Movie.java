@@ -1,6 +1,8 @@
 package lv.sdacademy.app.domain;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "movies")
@@ -22,6 +24,9 @@ public class Movie {
 
     @Column(name = "description", nullable = false)
     private String description;
+
+    @OneToMany(mappedBy = "movie")
+    private Set<Schedule> schedules = new HashSet<>();
 
     public Integer getId() {
         return id;
@@ -77,5 +82,14 @@ public class Movie {
                 ", duration=" + duration +
                 ", description='" + description + '\'' +
                 '}';
+    }
+
+    public Set<Schedule> getSchedules() {
+        return schedules;
+    }
+
+    public Movie setSchedules(Set<Schedule> schedules) {
+        this.schedules = schedules;
+        return this;
     }
 }

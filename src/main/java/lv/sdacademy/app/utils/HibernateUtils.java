@@ -2,6 +2,7 @@ package lv.sdacademy.app.utils;
 
 
 import lv.sdacademy.app.domain.Movie;
+import lv.sdacademy.app.domain.Schedule;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -32,6 +33,7 @@ public class HibernateUtils {
 
                 conf.setProperties(settings);
                 conf.addAnnotatedClass(Movie.class);
+                conf.addAnnotatedClass(Schedule.class);
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                         .applySettings(conf.getProperties())
