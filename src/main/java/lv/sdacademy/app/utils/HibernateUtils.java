@@ -1,6 +1,7 @@
 package lv.sdacademy.app.utils;
 
 
+import lv.sdacademy.app.domain.Movie;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -30,6 +31,7 @@ public class HibernateUtils {
                 settings.put(Environment.HBM2DDL_AUTO, "validate");
 
                 conf.setProperties(settings);
+                conf.addAnnotatedClass(Movie.class);
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                         .applySettings(conf.getProperties())
