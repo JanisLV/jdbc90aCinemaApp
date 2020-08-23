@@ -21,8 +21,8 @@ public class MovieRepository extends AbstractHibernateRepository<Movie, Integer>
 
     public List<Movie> findRunningOn(LocalDate date) {
         return HibernateUtils.doInTransactionWithResult(session -> {
-            LocalDateTime fromTime = LocalDateTime.of(date, LocalTime.MIDNIGHT);
-            LocalDateTime tillTime = fromTime.plusDays(1);
+            ZonedDateTime fromTime = LocalDateTime.of(date, LocalTime.MIDNIGHT).atZone(ZoneId.of("UTC"));
+            ZonedDateTime tillTime = fromTime.plusDays(1);
 
             String scheduleHql = "select s from Schedule s join fetch s.movie where s.startTime > :fromTime and s.startTime < :tillTime";
 

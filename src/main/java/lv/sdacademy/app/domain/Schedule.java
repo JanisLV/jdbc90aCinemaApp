@@ -2,6 +2,7 @@ package lv.sdacademy.app.domain;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 @Entity
 @Table(name = "schedules")
@@ -13,7 +14,7 @@ public class Schedule {
     private Integer id;
 
     @Column(name = "startTime")
-    private LocalDateTime startTime;
+    private ZonedDateTime startTime;
 
     @ManyToOne
     @JoinColumn(name = "movieId")
@@ -28,11 +29,11 @@ public class Schedule {
         return this;
     }
 
-    public LocalDateTime getStartTime() {
+    public ZonedDateTime getStartTime() {
         return startTime;
     }
 
-    public Schedule setStartTime(LocalDateTime startTime) {
+    public Schedule setStartTime(ZonedDateTime startTime) {
         this.startTime = startTime;
         return this;
     }
